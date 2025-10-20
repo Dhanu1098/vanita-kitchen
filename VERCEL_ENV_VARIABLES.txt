@@ -1,0 +1,101 @@
+=====================================
+   VERCEL ENVIRONMENT VARIABLES
+   (Copy-Paste These Exactly)
+=====================================
+
+IMPORTANT: Vercel par deploy karte time ye sab 
+environment variables add karne ZAROORI hain!
+
+
+HOW TO ADD:
+-----------
+1. Vercel dashboard mein project select karo
+2. "Environment Variables" section dhundo
+3. Niche diye gaye har ek variable add karo
+4. "Add" button click karo har ek ke liye
+
+
+VARIABLES TO ADD:
+-----------------
+
+Name: NEXT_PUBLIC_SUPABASE_URL
+Value: https://iqdyzxcdsnoxdtesrpjo.supabase.co
+
+---
+
+Name: NEXT_PUBLIC_SUPABASE_ANON_KEY
+Value: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlxZHl6eGNkc25veGR0ZXNycGpvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA1MDU1NDQsImV4cCI6MjA3NjA4MTU0NH0.2wtXtWswDjhhvuzjeF5n-tkW5_ePD8wvR3iSCJdHh5E
+
+---
+
+Name: NEXT_PUBLIC_EMAILJS_SERVICE_ID
+Value: service_xzkmyne
+
+---
+
+Name: NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+Value: 8XWgKAWS-id623A9M
+
+---
+
+Name: NEXT_PUBLIC_EMAILJS_TEMPLATE_DAILY
+Value: template_ta0v1vm
+
+---
+
+Name: NEXT_PUBLIC_EMAILJS_TEMPLATE_SUBSCRIPTION
+Value: template_yk223rp
+
+---
+
+
+QUICK CHECKLIST:
+----------------
+□ NEXT_PUBLIC_SUPABASE_URL
+□ NEXT_PUBLIC_SUPABASE_ANON_KEY
+□ NEXT_PUBLIC_EMAILJS_SERVICE_ID
+□ NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+□ NEXT_PUBLIC_EMAILJS_TEMPLATE_DAILY
+□ NEXT_PUBLIC_EMAILJS_TEMPLATE_SUBSCRIPTION
+
+
+DEPLOYMENT SETTINGS:
+--------------------
+Framework: Next.js (auto-detected)
+Build Command: npm run build
+Output Directory: .next
+Install Command: npm install
+
+
+AFTER DEPLOYMENT:
+-----------------
+1. Wait 2-3 minutes for build
+2. URL mil jayega (example: vanita-kitchen.vercel.app)
+3. Test karo browser mein
+4. Phone par kholo
+5. "Add to Home Screen" karo
+6. Done! 🎉
+
+
+TROUBLESHOOTING:
+----------------
+Build Failed?
+→ Check if all environment variables added
+→ Check Vercel logs for errors
+
+Database Not Working?
+→ Verify Supabase URL and Key
+→ Check Supabase dashboard
+
+Email Not Working?
+→ Verify EmailJS credentials
+→ Check EmailJS dashboard
+
+
+=====================================
+       READY FOR VERCEL! 🚀
+=====================================
+
+Next: https://vercel.com
+Guide: DEPLOY_NOW.md
+
