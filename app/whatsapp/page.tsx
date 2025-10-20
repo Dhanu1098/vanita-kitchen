@@ -168,7 +168,7 @@ export default function WhatsAppEntryPage() {
           // Create order with selected date
           const orderDate = order.orderDate ? new Date(order.orderDate) : new Date();
           await addOrder({
-            customerId: customer?.id || null,
+            customerId: customer?.id || '',
             customerName: order.customerName,
             customerPhone: order.phone || '',
             customerAddress: order.address || '',
