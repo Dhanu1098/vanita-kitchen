@@ -1,0 +1,329 @@
+<!-- ============================================ -->
+<!-- TEMPLATE 1: DAILY SUMMARY EMAIL -->
+<!-- ============================================ -->
+
+<!-- 
+Copy this complete HTML and paste in EmailJS:
+Dashboard > Email Templates > Create New Template > Switch to HTML mode
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Summary</title>
+</head>
+<body style="margin: 0; padding: 0; font-family: Arial, sans-serif; background-color: #f5f5f5;">
+    <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #f5f5f5; padding: 20px;">
+        <tr>
+            <td align="center">
+                <!-- Main Container -->
+                <table width="600" cellpadding="0" cellspacing="0" border="0" style="background-color: #ffffff; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                    
+                    <!-- Header -->
+                    <tr>
+                        <td style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 40px 30px; text-align: center;">
+                            <h1 style="color: #ffffff; margin: 0; font-size: 28px; font-weight: bold;">
+                                📊 Daily Business Summary
+                            </h1>
+                            <p style="color: #ffffff; margin: 10px 0 0 0; font-size: 16px; opacity: 0.9;">
+                                {{date}}
+                            </p>
+                        </td>
+                    </tr>
+                    
+                    <!-- Greeting -->
+                    <tr>
+                        <td style="padding: 30px 30px 20px 30px;">
+                            <p style="color: #333333; font-size: 16px; margin: 0;">
+                                Hello <strong>{{business_name}}</strong>,
+                            </p>
+                            <p style="color: #666666; font-size: 14px; margin: 10px 0 0 0;">
+                                Here's your daily performance report:
+                            </p>
+                        </td>
+                    </tr>
+                    
+                    <!-- Stats Cards -->
+                    <tr>
+                        <td style="padding: 0 30px;">
+                            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                                <tr>
+                                    <!-- Total Orders -->
+                                    <td width="48%" style="background-color: #f0f4ff; border-radius: 8px; padding: 20px; vertical-align: top;">
+                                        <p style="color: #667eea; font-size: 12px; margin: 0; font-weight: bold; text-transform: uppercase;">
+                                            Total Orders
+                                        </p>
+                                        <p style="color: #333333; font-size: 32px; margin: 10px 0 0 0; font-weight: bold;">
+                                            {{total_orders}}
+                                        </p>
+                                        <p style="color: #666666; font-size: 12px; margin: 8px 0 0 0;">
+                                            🍛 Lunch: {{lunch_count}} | 🌙 Dinner: {{dinner_count}}
+                                        </p>
+                                    </td>
+                                    <td width="4%"></td>
+                                    <!-- Revenue -->
+                                    <td width="48%" style="background-color: #f0fdf4; border-radius: 8px; padding: 20px; vertical-align: top;">
+                                        <p style="color: #22c55e; font-size: 12px; margin: 0; font-weight: bold; text-transform: uppercase;">
+                                            Revenue
+                                        </p>
+                                        <p style="color: #333333; font-size: 32px; margin: 10px 0 0 0; font-weight: bold;">
+                                            {{total_revenue}}
+                                        </p>
+                                        <p style="color: #666666; font-size: 12px; margin: 8px 0 0 0;">
+                                            💰 Today's Income
+                                        </p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td style="padding: 15px 30px;">
+                            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                                <tr>
+                                    <!-- Profit -->
+                                    <td width="48%" style="background-color: #f0f9ff; border-radius: 8px; padding: 20px; vertical-align: top;">
+                                        <p style="color: #3b82f6; font-size: 12px; margin: 0; font-weight: bold; text-transform: uppercase;">
+                                            Profit
+                                        </p>
+                                        <p style="color: #333333; font-size: 32px; margin: 10px 0 0 0; font-weight: bold;">
+                                            {{total_profit}}
+                                        </p>
+                                        <p style="color: #666666; font-size: 12px; margin: 8px 0 0 0;">
+                                            📈 Net Profit
+                                        </p>
+                                    </td>
+                                    <td width="4%"></td>
+                                    <!-- Cost -->
+                                    <td width="48%" style="background-color: #fff1f2; border-radius: 8px; padding: 20px; vertical-align: top;">
+                                        <p style="color: #ef4444; font-size: 12px; margin: 0; font-weight: bold; text-transform: uppercase;">
+                                            Cost
+                                        </p>
+                                        <p style="color: #333333; font-size: 32px; margin: 10px 0 0 0; font-weight: bold;">
+                                            {{total_cost}}
+                                        </p>
+                                        <p style="color: #666666; font-size: 12px; margin: 8px 0 0 0;">
+                                            💸 Operating Expenses
+                                        </p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    
+                    <!-- Motivational Message -->
+                    <tr>
+                        <td style="padding: 20px 30px;">
+                            <div style="background-color: #fef3c7; border-left: 4px solid #f59e0b; padding: 15px; border-radius: 4px;">
+                                <p style="color: #92400e; font-size: 14px; margin: 0; font-weight: 500;">
+                                    🎯 <strong>Keep it up!</strong> Your business is growing every day.
+                                </p>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    <!-- Footer -->
+                    <tr>
+                        <td style="background-color: #f9fafb; padding: 30px; text-align: center; border-top: 1px solid #e5e7eb;">
+                            <p style="color: #6b7280; font-size: 12px; margin: 0;">
+                                This is an automated email from your
+                            </p>
+                            <p style="color: #374151; font-size: 14px; margin: 5px 0; font-weight: bold;">
+                                Tiffin Service Management System
+                            </p>
+                            <p style="color: #9ca3af; font-size: 11px; margin: 15px 0 0 0;">
+                                © 2025 All rights reserved
+                            </p>
+                        </td>
+                    </tr>
+                    
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
+
+
+<!-- ============================================ -->
+<!-- TEMPLATE 2: SUBSCRIPTION EXPIRY ALERT -->
+<!-- ============================================ -->
+
+<!-- 
+Copy this complete HTML and paste in EmailJS:
+Dashboard > Email Templates > Create New Template > Switch to HTML mode
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscription Expiry Alert</title>
+</head>
+<body style="margin: 0; padding: 0; font-family: Arial, sans-serif; background-color: #f5f5f5;">
+    <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #f5f5f5; padding: 20px;">
+        <tr>
+            <td align="center">
+                <!-- Main Container -->
+                <table width="600" cellpadding="0" cellspacing="0" border="0" style="background-color: #ffffff; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                    
+                    <!-- Header -->
+                    <tr>
+                        <td style="background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); padding: 40px 30px; text-align: center;">
+                            <h1 style="color: #ffffff; margin: 0; font-size: 28px; font-weight: bold;">
+                                ⏰ Subscription Expiring Soon
+                            </h1>
+                            <p style="color: #ffffff; margin: 10px 0 0 0; font-size: 16px; opacity: 0.9;">
+                                Renewal Reminder
+                            </p>
+                        </td>
+                    </tr>
+                    
+                    <!-- Alert Box -->
+                    <tr>
+                        <td style="padding: 30px 30px 20px 30px;">
+                            <div style="background-color: #fef3c7; border: 2px solid #f59e0b; border-radius: 8px; padding: 20px; text-align: center;">
+                                <p style="color: #92400e; font-size: 18px; margin: 0; font-weight: bold;">
+                                    🔔 Action Required
+                                </p>
+                                <p style="color: #78350f; font-size: 14px; margin: 10px 0 0 0;">
+                                    A customer's subscription is about to expire
+                                </p>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    <!-- Greeting -->
+                    <tr>
+                        <td style="padding: 0 30px 20px 30px;">
+                            <p style="color: #333333; font-size: 16px; margin: 0;">
+                                Hello <strong>{{business_name}}</strong>,
+                            </p>
+                            <p style="color: #666666; font-size: 14px; margin: 10px 0 0 0;">
+                                Please take necessary action for the following subscription:
+                            </p>
+                        </td>
+                    </tr>
+                    
+                    <!-- Customer Details Card -->
+                    <tr>
+                        <td style="padding: 0 30px 20px 30px;">
+                            <div style="background: linear-gradient(135deg, #e0e7ff 0%, #dbeafe 100%); border-radius: 10px; padding: 25px; border: 2px solid #818cf8;">
+                                <p style="color: #4338ca; font-size: 12px; margin: 0; font-weight: bold; text-transform: uppercase;">
+                                    Customer Information
+                                </p>
+                                <p style="color: #1e1b4b; font-size: 24px; margin: 10px 0; font-weight: bold;">
+                                    {{customer_name}}
+                                </p>
+                                
+                                <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-top: 15px;">
+                                    <tr>
+                                        <td width="50%" style="padding: 10px 0; border-top: 1px solid rgba(129, 140, 248, 0.3);">
+                                            <p style="color: #6366f1; font-size: 12px; margin: 0; font-weight: bold;">
+                                                Plan Type
+                                            </p>
+                                            <p style="color: #1e1b4b; font-size: 16px; margin: 5px 0 0 0; font-weight: 600;">
+                                                {{plan_type}}
+                                            </p>
+                                        </td>
+                                        <td width="50%" style="padding: 10px 0; border-top: 1px solid rgba(129, 140, 248, 0.3);">
+                                            <p style="color: #6366f1; font-size: 12px; margin: 0; font-weight: bold;">
+                                                Meal Type
+                                            </p>
+                                            <p style="color: #1e1b4b; font-size: 16px; margin: 5px 0 0 0; font-weight: 600;">
+                                                {{meal_type}}
+                                            </p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="50%" style="padding: 10px 0; border-top: 1px solid rgba(129, 140, 248, 0.3);">
+                                            <p style="color: #6366f1; font-size: 12px; margin: 0; font-weight: bold;">
+                                                Subscription Price
+                                            </p>
+                                            <p style="color: #1e1b4b; font-size: 16px; margin: 5px 0 0 0; font-weight: 600;">
+                                                {{subscription_price}}
+                                            </p>
+                                        </td>
+                                        <td width="50%" style="padding: 10px 0; border-top: 1px solid rgba(129, 140, 248, 0.3);">
+                                            <p style="color: #6366f1; font-size: 12px; margin: 0; font-weight: bold;">
+                                                Status
+                                            </p>
+                                            <p style="color: #dc2626; font-size: 16px; margin: 5px 0 0 0; font-weight: 600;">
+                                                Expiring Soon
+                                            </p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    <!-- Expiry Details -->
+                    <tr>
+                        <td style="padding: 0 30px;">
+                            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                                <tr>
+                                    <td width="48%" style="background-color: #fef2f2; border: 2px solid #fca5a5; border-radius: 8px; padding: 20px; text-align: center;">
+                                        <p style="color: #991b1b; font-size: 12px; margin: 0; font-weight: bold; text-transform: uppercase;">
+                                            Expiry Date
+                                        </p>
+                                        <p style="color: #dc2626; font-size: 24px; margin: 10px 0 0 0; font-weight: bold;">
+                                            {{expiry_date}}
+                                        </p>
+                                    </td>
+                                    <td width="4%"></td>
+                                    <td width="48%" style="background-color: #fef2f2; border: 2px solid #fca5a5; border-radius: 8px; padding: 20px; text-align: center;">
+                                        <p style="color: #991b1b; font-size: 12px; margin: 0; font-weight: bold; text-transform: uppercase;">
+                                            Days Remaining
+                                        </p>
+                                        <p style="color: #dc2626; font-size: 24px; margin: 10px 0 0 0; font-weight: bold;">
+                                            {{days_remaining}} Days
+                                        </p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    
+                    <!-- Action Required -->
+                    <tr>
+                        <td style="padding: 30px;">
+                            <div style="background-color: #ecfdf5; border-left: 4px solid #10b981; padding: 20px; border-radius: 4px;">
+                                <p style="color: #065f46; font-size: 15px; margin: 0; font-weight: 600;">
+                                    📞 What to do next?
+                                </p>
+                                <ul style="color: #047857; font-size: 14px; margin: 10px 0 0 0; padding-left: 20px;">
+                                    <li style="margin: 5px 0;">Contact the customer immediately</li>
+                                    <li style="margin: 5px 0;">Discuss renewal options</li>
+                                    <li style="margin: 5px 0;">Update subscription in the system</li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    <!-- Footer -->
+                    <tr>
+                        <td style="background-color: #f9fafb; padding: 30px; text-align: center; border-top: 1px solid #e5e7eb;">
+                            <p style="color: #6b7280; font-size: 12px; margin: 0;">
+                                This is an automated alert from your
+                            </p>
+                            <p style="color: #374151; font-size: 14px; margin: 5px 0; font-weight: bold;">
+                                Tiffin Service Management System
+                            </p>
+                            <p style="color: #9ca3af; font-size: 11px; margin: 15px 0 0 0;">
+                                © 2025 All rights reserved
+                            </p>
+                        </td>
+                    </tr>
+                    
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
+

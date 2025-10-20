@@ -1,0 +1,78 @@
+=====================================
+  ANDROID PHONE SE ACCESS KAISE KARE
+=====================================
+
+AAPKA IP ADDRESS:
+-----------------
+192.168.31.59
+
+
+PHONE PAR YE URL KHOLO:
+------------------------
+http://192.168.31.59:3000
+
+
+STEPS (Abhi Karo):
+------------------
+
+1. ✅ Configuration already updated!
+
+2. 🔴 CURRENT SERVER STOP KARO:
+   Terminal mein Ctrl+C press karo
+
+3. ✅ SERVER RESTART KARO:
+   npm run dev
+
+4. 📱 PHONE SE ACCESS KARO:
+   - Phone ka WiFi ON karo
+   - Same WiFi se connect karo (computer wala)
+   - Browser kholo (Chrome/Firefox)
+   - Type karo: http://192.168.31.59:3000
+   - Enter press karo!
+
+5. 🔥 FIREWALL PERMISSION:
+   Agar Windows popup aaye to "Allow" click karo
+
+
+IMPORTANT NOTES:
+----------------
+✅ Phone aur Computer SAME WiFi par hone chahiye
+✅ Mobile Data OFF karo, WiFi ON karo
+✅ Server running hona chahiye (npm run dev)
+✅ Firewall allow karna mat bhoolna
+
+
+TROUBLESHOOTING:
+----------------
+
+Problem: Page nahi khul raha?
+Fix: 
+- WiFi same hai check karo
+- IP address sahi likha hai check karo
+- Server running hai check karo
+- Firewall allow kiya hai check karo
+
+Problem: "Connection Refused"?
+Fix:
+- Server restart karo
+- 1 minute wait karo
+- Phir try karo
+
+
+COPY THIS URL:
+--------------
+http://192.168.31.59:3000
+
+
+BOOKMARK IT:
+------------
+Phone browser mein bookmark kar lo
+Next time directly open kar sakte ho!
+
+
+=====================================
+       IT'S THAT SIMPLE! 🚀
+=====================================
+
+Questions? Check: MOBILE_ACCESS_GUIDE.md
+
