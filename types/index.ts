@@ -69,8 +69,13 @@ export interface Order {
   deliveryCharge: number; // Delivery charge for long distance
   profit: number; // Price - Cost + DeliveryCharge
   status: 'pending' | 'confirmed' | 'delivered' | 'cancelled';
-  source: 'whatsapp' | 'manual' | 'subscription';
+  source: 'whatsapp' | 'manual' | 'subscription' | 'customer-app';
   notes?: string;
+  // Payment fields
+  paymentMethod?: 'cash' | 'online';
+  isPaid?: boolean;
+  paidAt?: Date;
+  cashCollectedBy?: string;
   // Delivery fields
   areaId?: string;
   deliveryBoyId?: string;
