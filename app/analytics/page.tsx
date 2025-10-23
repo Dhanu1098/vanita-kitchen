@@ -122,101 +122,103 @@ export default function AnalyticsPage() {
   return (
     <div className="flex min-h-screen bg-gray-50">
       <Sidebar />
-      <div className="flex-1 ml-64 p-8">
-        <div className="mb-8">
-          <div className="flex items-center justify-between">
+      <div className="flex-1 lg:ml-64 p-4 sm:p-6 lg:p-8">
+        <div className="mb-6 sm:mb-8">
+          <div className="flex flex-col gap-4">
             <div>
-              <h1 className="text-3xl font-bold text-gray-900">Analytics</h1>
-              <p className="text-gray-600 mt-2">Detailed business insights and reports ({orders.length} orders analyzed)</p>
+              <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">📊 Analytics</h1>
+              <p className="text-sm sm:text-base text-gray-600 mt-1 sm:mt-2">Detailed insights ({orders.length} orders)</p>
             </div>
-            <div className="flex gap-2">
+            <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
               <button 
                 onClick={handleRefresh}
                 disabled={refreshing}
-                className="btn btn-secondary flex items-center gap-2 mr-2"
+                className="btn btn-secondary flex items-center justify-center gap-2 w-full sm:w-auto"
               >
-                <RefreshCw size={18} className={refreshing ? 'animate-spin' : ''} />
-                Refresh
+                <RefreshCw size={16} className={refreshing ? 'animate-spin' : ''} />
+                <span className="text-sm">Refresh</span>
               </button>
-              <button 
-                onClick={() => setTimeRange('daily')}
-                className={`px-4 py-2 rounded-lg font-medium transition ${
-                  timeRange === 'daily' ? 'bg-primary-600 text-white' : 'bg-white text-gray-700 hover:bg-gray-100'
-                }`}
-              >
-                Daily
-              </button>
-              <button 
-                onClick={() => setTimeRange('weekly')}
-                className={`px-4 py-2 rounded-lg font-medium transition ${
-                  timeRange === 'weekly' ? 'bg-primary-600 text-white' : 'bg-white text-gray-700 hover:bg-gray-100'
-                }`}
-              >
-                Weekly
-              </button>
-              <button 
-                onClick={() => setTimeRange('monthly')}
-                className={`px-4 py-2 rounded-lg font-medium transition ${
-                  timeRange === 'monthly' ? 'bg-primary-600 text-white' : 'bg-white text-gray-700 hover:bg-gray-100'
-                }`}
-              >
-                Monthly
-              </button>
-              <button 
-                onClick={() => setTimeRange('yearly')}
-                className={`px-4 py-2 rounded-lg font-medium transition ${
-                  timeRange === 'yearly' ? 'bg-primary-600 text-white' : 'bg-white text-gray-700 hover:bg-gray-100'
-                }`}
-              >
-                Yearly
-              </button>
+              <div className="flex gap-2 overflow-x-auto pb-2">
+                <button 
+                  onClick={() => setTimeRange('daily')}
+                  className={`px-3 sm:px-4 py-2 rounded-lg font-medium transition whitespace-nowrap text-sm ${
+                    timeRange === 'daily' ? 'bg-primary-600 text-white' : 'bg-white text-gray-700 hover:bg-gray-100'
+                  }`}
+                >
+                  Daily
+                </button>
+                <button 
+                  onClick={() => setTimeRange('weekly')}
+                  className={`px-3 sm:px-4 py-2 rounded-lg font-medium transition whitespace-nowrap text-sm ${
+                    timeRange === 'weekly' ? 'bg-primary-600 text-white' : 'bg-white text-gray-700 hover:bg-gray-100'
+                  }`}
+                >
+                  Weekly
+                </button>
+                <button 
+                  onClick={() => setTimeRange('monthly')}
+                  className={`px-3 sm:px-4 py-2 rounded-lg font-medium transition whitespace-nowrap text-sm ${
+                    timeRange === 'monthly' ? 'bg-primary-600 text-white' : 'bg-white text-gray-700 hover:bg-gray-100'
+                  }`}
+                >
+                  Monthly
+                </button>
+                <button 
+                  onClick={() => setTimeRange('yearly')}
+                  className={`px-3 sm:px-4 py-2 rounded-lg font-medium transition whitespace-nowrap text-sm ${
+                    timeRange === 'yearly' ? 'bg-primary-600 text-white' : 'bg-white text-gray-700 hover:bg-gray-100'
+                  }`}
+                >
+                  Yearly
+                </button>
+              </div>
             </div>
           </div>
         </div>
 
         {/* Key Metrics */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          <div className="card bg-gradient-to-br from-green-500 to-green-600 text-white">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6 mb-6 sm:mb-8">
+          <div className="card bg-gradient-to-br from-green-500 to-green-600 text-white p-4 sm:p-6">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm opacity-90">Total Revenue</span>
-              <DollarSign size={20} />
+              <span className="text-xs sm:text-sm opacity-90">Total Revenue</span>
+              <DollarSign size={18} className="sm:w-5 sm:h-5" />
             </div>
-            <p className="text-3xl font-bold">{formatCurrency(stats?.totalRevenue || 0)}</p>
-            <p className="text-sm opacity-90 mt-2">From {stats?.totalOrders || 0} orders</p>
+            <p className="text-2xl sm:text-3xl font-bold">{formatCurrency(stats?.totalRevenue || 0)}</p>
+            <p className="text-xs sm:text-sm opacity-90 mt-1 sm:mt-2">From {stats?.totalOrders || 0} orders</p>
           </div>
           
-          <div className="card bg-gradient-to-br from-blue-500 to-blue-600 text-white">
+          <div className="card bg-gradient-to-br from-blue-500 to-blue-600 text-white p-4 sm:p-6">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm opacity-90">Total Profit</span>
-              <TrendingUp size={20} />
+              <span className="text-xs sm:text-sm opacity-90">Total Profit</span>
+              <TrendingUp size={18} className="sm:w-5 sm:h-5" />
             </div>
-            <p className="text-3xl font-bold">{formatCurrency(stats?.totalProfit || 0)}</p>
-            <p className="text-sm opacity-90 mt-2">{profitMargin.toFixed(1)}% margin</p>
+            <p className="text-2xl sm:text-3xl font-bold">{formatCurrency(stats?.totalProfit || 0)}</p>
+            <p className="text-xs sm:text-sm opacity-90 mt-1 sm:mt-2">{profitMargin.toFixed(1)}% margin</p>
           </div>
           
-          <div className="card bg-gradient-to-br from-orange-500 to-orange-600 text-white">
+          <div className="card bg-gradient-to-br from-orange-500 to-orange-600 text-white p-4 sm:p-6">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm opacity-90">Total Cost</span>
-              <Package size={20} />
+              <span className="text-xs sm:text-sm opacity-90">Total Cost</span>
+              <Package size={18} className="sm:w-5 sm:h-5" />
             </div>
-            <p className="text-3xl font-bold">{formatCurrency(stats?.totalCost || 0)}</p>
-            <p className="text-sm opacity-90 mt-2">Operating expenses</p>
+            <p className="text-2xl sm:text-3xl font-bold">{formatCurrency(stats?.totalCost || 0)}</p>
+            <p className="text-xs sm:text-sm opacity-90 mt-1 sm:mt-2">Operating expenses</p>
           </div>
           
-          <div className="card bg-gradient-to-br from-purple-500 to-purple-600 text-white">
+          <div className="card bg-gradient-to-br from-purple-500 to-purple-600 text-white p-4 sm:p-6">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm opacity-90">Total Orders</span>
-              <Calendar size={20} />
+              <span className="text-xs sm:text-sm opacity-90">Total Orders</span>
+              <Calendar size={18} className="sm:w-5 sm:h-5" />
             </div>
-            <p className="text-3xl font-bold">{stats?.totalOrders || 0}</p>
-            <p className="text-sm opacity-90 mt-2">
+            <p className="text-2xl sm:text-3xl font-bold">{stats?.totalOrders || 0}</p>
+            <p className="text-xs sm:text-sm opacity-90 mt-1 sm:mt-2">
               {stats?.lunchCount || 0} lunch, {stats?.dinnerCount || 0} dinner
             </p>
           </div>
         </div>
 
         {/* Detailed Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6 mb-6 sm:mb-8">
           <div className="card">
             <h3 className="text-lg font-semibold mb-4">Average Order Value</h3>
             <p className="text-3xl font-bold text-primary-600">
@@ -265,9 +267,9 @@ export default function AnalyticsPage() {
         </div>
 
         {/* Revenue & Profit Chart */}
-        <div className="card mb-8">
-          <h2 className="text-xl font-semibold mb-4">Revenue & Profit Trend</h2>
-          <ResponsiveContainer width="100%" height={400}>
+        <div className="card p-3 sm:p-4 lg:p-6 mb-6 sm:mb-8">
+          <h2 className="text-base sm:text-lg lg:text-xl font-semibold mb-3 sm:mb-4">Revenue & Profit Trend</h2>
+          <ResponsiveContainer width="100%" height={300}>
             <AreaChart data={chartData}>
               <defs>
                 <linearGradient id="colorRevenue" x1="0" y1="0" x2="0" y2="1">
@@ -291,39 +293,39 @@ export default function AnalyticsPage() {
         </div>
 
         {/* Meal Type Analytics */}
-        <div className="card mb-8">
-          <h2 className="text-xl font-semibold mb-4">Lunch vs Dinner Orders</h2>
-          <div className="grid grid-cols-2 gap-4 mb-4">
-            <div className="bg-orange-50 p-4 rounded-lg border-2 border-orange-200">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm text-orange-600 font-medium">🍛 Lunch Orders</p>
-                  <p className="text-3xl font-bold text-orange-700 mt-1">{stats?.lunchCount || 0}</p>
+        <div className="card p-3 sm:p-4 lg:p-6 mb-6 sm:mb-8">
+          <h2 className="text-base sm:text-lg lg:text-xl font-semibold mb-3 sm:mb-4">Lunch vs Dinner</h2>
+          <div className="grid grid-cols-2 gap-2 sm:gap-3 lg:gap-4 mb-3 sm:mb-4">
+            <div className="bg-orange-50 p-2 sm:p-3 lg:p-4 rounded-lg border-2 border-orange-200">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+                <div className="mb-2 sm:mb-0">
+                  <p className="text-xs sm:text-sm text-orange-600 font-medium">🍛 Lunch</p>
+                  <p className="text-xl sm:text-2xl lg:text-3xl font-bold text-orange-700 mt-0.5 sm:mt-1">{stats?.lunchCount || 0}</p>
                 </div>
-                <div className="text-right">
+                <div className="text-left sm:text-right">
                   <p className="text-xs text-orange-600">Percentage</p>
-                  <p className="text-xl font-bold text-orange-700">
+                  <p className="text-lg sm:text-xl font-bold text-orange-700">
                     {stats?.totalOrders ? ((stats.lunchCount / stats.totalOrders) * 100).toFixed(0) : 0}%
                   </p>
                 </div>
               </div>
             </div>
-            <div className="bg-indigo-50 p-4 rounded-lg border-2 border-indigo-200">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm text-indigo-600 font-medium">🌙 Dinner Orders</p>
-                  <p className="text-3xl font-bold text-indigo-700 mt-1">{stats?.dinnerCount || 0}</p>
+            <div className="bg-indigo-50 p-2 sm:p-3 lg:p-4 rounded-lg border-2 border-indigo-200">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+                <div className="mb-2 sm:mb-0">
+                  <p className="text-xs sm:text-sm text-indigo-600 font-medium">🌙 Dinner</p>
+                  <p className="text-xl sm:text-2xl lg:text-3xl font-bold text-indigo-700 mt-0.5 sm:mt-1">{stats?.dinnerCount || 0}</p>
                 </div>
-                <div className="text-right">
+                <div className="text-left sm:text-right">
                   <p className="text-xs text-indigo-600">Percentage</p>
-                  <p className="text-xl font-bold text-indigo-700">
+                  <p className="text-lg sm:text-xl font-bold text-indigo-700">
                     {stats?.totalOrders ? ((stats.dinnerCount / stats.totalOrders) * 100).toFixed(0) : 0}%
                   </p>
                 </div>
               </div>
             </div>
           </div>
-          <ResponsiveContainer width="100%" height={300}>
+          <ResponsiveContainer width="100%" height={250}>
             <BarChart data={chartData}>
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="date" />
@@ -337,10 +339,10 @@ export default function AnalyticsPage() {
         </div>
 
         {/* Cost vs Revenue */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-          <div className="card">
-            <h2 className="text-xl font-semibold mb-4">Cost vs Revenue Analysis</h2>
-            <ResponsiveContainer width="100%" height={300}>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-4 lg:gap-6 mb-6 sm:mb-8">
+          <div className="card p-3 sm:p-4 lg:p-6">
+            <h2 className="text-base sm:text-lg lg:text-xl font-semibold mb-3 sm:mb-4">Cost vs Revenue</h2>
+            <ResponsiveContainer width="100%" height={250}>
               <BarChart data={chartData}>
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="date" />
@@ -353,9 +355,9 @@ export default function AnalyticsPage() {
             </ResponsiveContainer>
           </div>
 
-          <div className="card">
-            <h2 className="text-xl font-semibold mb-4">Order Volume</h2>
-            <ResponsiveContainer width="100%" height={300}>
+          <div className="card p-3 sm:p-4 lg:p-6">
+            <h2 className="text-base sm:text-lg lg:text-xl font-semibold mb-3 sm:mb-4">Order Volume</h2>
+            <ResponsiveContainer width="100%" height={250}>
               <LineChart data={chartData}>
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="date" />

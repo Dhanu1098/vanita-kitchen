@@ -112,7 +112,7 @@ export default function NewOrderPage() {
   return (
     <div className="flex min-h-screen bg-gray-50">
       <Sidebar />
-      <div className="flex-1 ml-64 p-8">
+      <div className="flex-1 lg:ml-64 p-4 sm:p-6 lg:p-8">
         <div className="mb-8">
           <button 
             onClick={() => router.back()}
@@ -121,7 +121,7 @@ export default function NewOrderPage() {
             <ArrowLeft size={20} className="mr-2" />
             Back to Orders
           </button>
-          <h1 className="text-3xl font-bold text-gray-900">Add New Order</h1>
+          <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900">Add New Order</h1>
           <p className="text-gray-600 mt-2">Create a new order entry</p>
         </div>
 

@@ -214,45 +214,32 @@ export default function WhatsAppEntryPage() {
   return (
     <div className="flex min-h-screen bg-gray-50">
       <Sidebar />
-      <div className="flex-1 ml-64 p-8">
-        <div className="mb-8">
-          <div className="flex items-center justify-between">
+      <div className="flex-1 lg:ml-64 p-4 sm:p-6 lg:p-8">
+        <div className="mb-6 sm:mb-8">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div>
-              <div className="flex items-center gap-3 mb-2">
-                <MessageSquare size={32} className="text-green-600" />
-                <h1 className="text-3xl font-bold text-gray-900">WhatsApp Order Entry</h1>
+              <div className="flex items-center gap-2 sm:gap-3 mb-2">
+                <MessageSquare size={24} className="sm:w-8 sm:h-8 text-green-600" />
+                <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900">WhatsApp Orders</h1>
               </div>
-              <p className="text-gray-600">Quickly add multiple orders from WhatsApp confirmations</p>
+              <p className="text-sm sm:text-base text-gray-600">Add orders from WhatsApp</p>
             </div>
             <button 
               onClick={handleAddOrder}
-              className="btn btn-primary flex items-center"
+              className="btn btn-primary flex items-center justify-center w-full sm:w-auto"
             >
-              <Plus size={20} className="mr-2" />
-              Add Another Order
+              <Plus size={18} className="sm:w-5 sm:h-5 mr-2" />
+              <span className="text-sm sm:text-base">Add Another Order</span>
             </button>
           </div>
         </div>
 
-        {/* Info Box */}
-        <div className="card bg-green-50 border-l-4 border-green-600 mb-6">
-          <p className="text-sm text-gray-700">
-            <strong>Quick Entry Mode:</strong> Add multiple orders at once from WhatsApp confirmations.
-          </p>
-          <ul className="text-sm text-gray-700 mt-2 space-y-1">
-            <li>✅ <strong>Type customer name</strong> to see suggestions (auto-fills phone & address)</li>
-            <li>✅ Add <strong>Complete Delivery Address</strong> for navigation</li>
-            <li>✅ Select <strong>Order Date</strong> for old data entry</li>
-            <li>✅ Add items and click "Submit All Orders"</li>
-          </ul>
-        </div>
-
         {/* Orders List */}
-        <div className="space-y-6">
+        <div className="space-y-4 sm:space-y-6">
           {orders.map((order, orderIndex) => (
-            <div key={order.id} className="card border-l-4 border-green-600">
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="text-lg font-semibold">Order #{orderIndex + 1}</h3>
+            <div key={order.id} className="card border-l-4 border-green-600 p-3 sm:p-4 lg:p-6">
+              <div className="flex items-center justify-between mb-3 sm:mb-4">
+                <h3 className="text-base sm:text-lg font-semibold">Order #{orderIndex + 1}</h3>
                 {orders.length > 1 && (
                   <button 
                     onClick={() => handleRemoveOrder(order.id)}
@@ -444,14 +431,14 @@ export default function WhatsAppEntryPage() {
         <div className="mt-8 flex gap-4">
           <button 
             onClick={handleSubmitAll}
-            className="btn btn-primary flex items-center text-lg px-8 py-3"
+            className="btn btn-primary flex items-center justify-center text-sm sm:text-base lg:text-lg px-4 sm:px-6 lg:px-8 py-2.5 sm:py-3"
           >
-            <CheckCircle size={24} className="mr-2" />
-            Submit All Orders ({orders.length})
+            <CheckCircle size={18} className="sm:w-5 sm:h-5 lg:w-6 lg:h-6 mr-2" />
+            Submit All ({orders.length})
           </button>
           <button 
             onClick={() => router.push('/orders')}
-            className="btn btn-secondary px-8 py-3"
+            className="btn btn-secondary px-4 sm:px-6 lg:px-8 py-2.5 sm:py-3"
           >
             Cancel
           </button>

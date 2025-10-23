@@ -77,7 +77,7 @@ export default function MenuPage() {
   return (
     <div className="flex min-h-screen bg-gray-50">
       <Sidebar />
-      <div className="flex-1 ml-64 p-8">
+      <div className="flex-1 lg:ml-64 p-4 sm:p-6 lg:p-8">
         <div className="mb-8">
           <div className="flex items-center justify-between">
             <div>
@@ -109,47 +109,47 @@ export default function MenuPage() {
         </div>
 
         {/* Menu Items Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-6">
           {menuItems.map((item) => {
             const profitPerItem = item.price - item.cost;
             const profitMargin = ((profitPerItem / item.price) * 100).toFixed(1);
             
             return (
-              <div key={item.id} className="card hover:shadow-lg transition-shadow">
-                <div className="flex items-start justify-between mb-4">
-                  <div className="flex-1">
-                    <h3 className="text-xl font-semibold text-gray-900 mb-2">{item.name}</h3>
-                    <span className={`px-3 py-1 rounded-full text-xs font-medium ${getCategoryBadge(item.category)}`}>
+              <div key={item.id} className="card hover:shadow-lg transition-shadow p-3 sm:p-4">
+                <div className="flex items-start justify-between mb-3">
+                  <div className="flex-1 min-w-0 mr-2">
+                    <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-1.5 truncate">{item.name}</h3>
+                    <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${getCategoryBadge(item.category)}`}>
                       {item.category.replace('-', ' ').toUpperCase()}
                     </span>
                   </div>
-                  <div className="flex gap-2">
+                  <div className="flex gap-1 flex-shrink-0">
                     <button 
                       onClick={() => handleEdit(item)}
-                      className="p-2 hover:bg-gray-100 rounded"
+                      className="p-1.5 hover:bg-gray-100 rounded"
                     >
-                      <Edit size={16} className="text-primary-600" />
+                      <Edit size={14} className="text-primary-600" />
                     </button>
                     <button 
                       onClick={() => handleDelete(item.id)}
-                      className="p-2 hover:bg-gray-100 rounded"
+                      className="p-1.5 hover:bg-gray-100 rounded"
                     >
-                      <Trash2 size={16} className="text-red-600" />
+                      <Trash2 size={14} className="text-red-600" />
                     </button>
                   </div>
                 </div>
                 
-                <div className="space-y-3">
+                <div className="space-y-2 text-sm">
                   <div className="flex justify-between items-center">
-                    <span className="text-gray-600 flex items-center">
-                      <DollarSign size={16} className="mr-1" />
-                      Selling Price
+                    <span className="text-gray-600 flex items-center text-xs sm:text-sm">
+                      <DollarSign size={14} className="mr-1" />
+                      Price
                     </span>
-                    <span className="text-lg font-bold text-green-600">₹{item.price}</span>
+                    <span className="text-base sm:text-lg font-bold text-green-600">₹{item.price}</span>
                   </div>
                   
                   <div className="flex justify-between items-center">
-                    <span className="text-gray-600">Cost Price</span>
+                    <span className="text-gray-600 text-xs sm:text-sm">Cost</span>
                     <span className="text-lg font-semibold text-red-600">₹{item.cost}</span>
                   </div>
                   

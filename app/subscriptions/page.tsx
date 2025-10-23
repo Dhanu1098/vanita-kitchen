@@ -101,7 +101,7 @@ export default function SubscriptionsPage() {
   return (
     <div className="flex min-h-screen bg-gray-50">
       <Sidebar />
-      <div className="flex-1 ml-64 p-8">
+      <div className="flex-1 lg:ml-64 p-4 sm:p-6 lg:p-8">
         <div className="mb-8">
           <div className="flex items-center justify-between">
             <div>
@@ -145,7 +145,7 @@ export default function SubscriptionsPage() {
         </div>
 
         {/* Subscriptions List */}
-        <div className="card">
+        <div className="hidden lg:block card">
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead>
@@ -214,6 +214,68 @@ export default function SubscriptionsPage() {
               </div>
             )}
           </div>
+        </div>
+
+        {/* Mobile Cards */}
+        <div className="lg:hidden space-y-2.5">
+          {subscriptions.length === 0 ? (
+            <div className="card text-center py-8 text-gray-500">
+              <Calendar size={40} className="mx-auto mb-3 text-gray-300" />
+              <p className="font-semibold">No subscriptions found</p>
+              <p className="text-xs">Add your first subscription</p>
+            </div>
+          ) : (
+            subscriptions.map((subscription) => {
+              const customer = customers.find(c => c.id === subscription.customerId);
+              const daysLeft = differenceInDays(new Date(subscription.endDate), new Date());
+              const statusColor = subscription.status === 'active' ? 'bg-green-100 text-green-800' :
+                                subscription.status === 'expired' ? 'bg-red-100 text-red-800' :
+                                'bg-gray-100 text-gray-800';
+
+              return (
+                <div key={subscription.id} className="card p-3">
+                  <div className="flex items-start justify-between mb-2">
+                    <div className="flex-1 min-w-0">
+                      <h3 className="font-bold text-base truncate">{customer?.name || 'Unknown'}</h3>
+                      <p className="text-xs text-gray-600 capitalize">{subscription.planType} • {subscription.mealType}</p>
+                    </div>
+                    <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${statusColor}`}>
+                      {subscription.status}
+                    </span>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-2 text-xs border-t pt-2">
+                    <div>
+                      <p className="text-gray-600">Price</p>
+                      <p className="font-bold text-sm text-green-600">₹{subscription.price}</p>
+                    </div>
+                    <div className="text-right">
+                      <p className="text-gray-600">Days Left</p>
+                      <p className={`font-bold text-sm ${daysLeft > 7 ? 'text-green-600' : daysLeft > 0 ? 'text-orange-600' : 'text-red-600'}`}>
+                        {daysLeft > 0 ? daysLeft : 'Expired'}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex gap-1.5 pt-2 border-t mt-2">
+                    <button
+                      onClick={() => setViewSubscription(subscription)}
+                      className="flex-1 btn btn-secondary py-1.5 text-xs"
+                    >
+                      <Eye size={14} className="inline mr-1" />
+                      View
+                    </button>
+                    <button
+                      onClick={() => handleDelete(subscription.id)}
+                      className="btn bg-red-500 text-white hover:bg-red-600 py-1.5 px-3 text-xs"
+                    >
+                      <Trash2 size={14} />
+                    </button>
+                  </div>
+                </div>
+              );
+            })
+          )}
         </div>
 
         {/* View Subscription Modal */}

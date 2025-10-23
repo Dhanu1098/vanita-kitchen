@@ -21,11 +21,26 @@ export interface DeliveryBoy {
   id: string;
   name: string;
   phone: string;
-  vehicleType: 'bike' | 'scooter' | 'bicycle' | 'car';
+  email?: string;
+  vehicleType: 'bike' | 'scooter' | 'cycle' | 'car';
   vehicleNumber?: string;
-  status: 'active' | 'inactive' | 'on-delivery';
-  assignedArea?: string;
+  address?: string;
+  status: 'active' | 'inactive' | 'on-leave';
+  joiningDate: Date;
+  profilePhoto?: string;
+  aadharNumber?: string;
+  licenseNumber?: string;
+  emergencyContact?: string;
+  salary: number;
+  incentivePerDelivery: number;
+  workingHours?: string;
+  rating: number;
+  totalDeliveries: number;
+  successfulDeliveries: number;
+  failedDeliveries: number;
+  notes?: string;
   createdAt: Date;
+  updatedAt?: Date;
 }
 
 export interface Subscription {

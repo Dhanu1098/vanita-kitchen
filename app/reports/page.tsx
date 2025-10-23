@@ -197,13 +197,13 @@ export default function ReportsPage() {
   return (
     <div className="flex min-h-screen bg-gray-50">
       <Sidebar />
-      <div className="flex-1 ml-64">
-        <div className="p-8">
+      <div className="flex-1 lg:ml-64">
+        <div className="p-4 sm:p-6 lg:p-8">
           <div className="space-y-6">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">Email Reports</h1>
+          <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900">Email Reports</h1>
           <p className="mt-1 text-sm text-gray-500">
             Send business reports and alerts via email
           </p>

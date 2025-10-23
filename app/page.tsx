@@ -74,24 +74,26 @@ export default function Dashboard() {
   return (
     <div className="flex min-h-screen bg-gray-50">
       <Sidebar />
-      <div className="flex-1 ml-64 p-8">
-        <div className="mb-8 flex items-center justify-between">
-          <div>
-            <h1 className="text-3xl font-bold text-gray-900">Dashboard</h1>
-            <p className="text-gray-600 mt-2">Welcome back! Here's your business overview.</p>
+      <div className="flex-1 lg:ml-64 p-4 sm:p-6 lg:p-8">
+        <div className="mb-6 sm:mb-8">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <div>
+              <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">Dashboard</h1>
+              <p className="text-sm sm:text-base text-gray-600 mt-1 sm:mt-2">Welcome back! Here's your business overview.</p>
+            </div>
+            <button 
+              onClick={handleRefresh}
+              disabled={refreshing}
+              className="btn btn-secondary flex items-center justify-center gap-2 w-full sm:w-auto"
+            >
+              <RefreshCw size={18} className={refreshing ? 'animate-spin' : ''} />
+              <span className="text-sm sm:text-base">Refresh</span>
+            </button>
           </div>
-          <button 
-            onClick={handleRefresh}
-            disabled={refreshing}
-            className="btn btn-secondary flex items-center gap-2"
-          >
-            <RefreshCw size={18} className={refreshing ? 'animate-spin' : ''} />
-            Refresh Data
-          </button>
         </div>
 
         {/* Stats Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6 mb-6 sm:mb-8">
           <StatsCard
             title="Today's Orders"
             value={todayOrders}

@@ -635,11 +635,26 @@ export const useStore = create<StoreState>()((set, get) => ({
         id: b.id,
         name: b.name,
         phone: b.phone,
+        email: b.email,
         vehicleType: b.vehicle_type,
         vehicleNumber: b.vehicle_number,
+        address: b.address,
         status: b.status,
-        assignedArea: b.assigned_area,
+        joiningDate: new Date(b.joining_date),
+        profilePhoto: b.profile_photo,
+        aadharNumber: b.aadhar_number,
+        licenseNumber: b.license_number,
+        emergencyContact: b.emergency_contact,
+        salary: parseFloat(b.salary || 0),
+        incentivePerDelivery: parseFloat(b.incentive_per_delivery || 0),
+        workingHours: b.working_hours,
+        rating: parseFloat(b.rating || 5.0),
+        totalDeliveries: parseInt(b.total_deliveries || 0),
+        successfulDeliveries: parseInt(b.successful_deliveries || 0),
+        failedDeliveries: parseInt(b.failed_deliveries || 0),
+        notes: b.notes,
         createdAt: new Date(b.created_at),
+        updatedAt: b.updated_at ? new Date(b.updated_at) : undefined,
       }));
       
       set({ deliveryBoys: boys });
@@ -650,16 +665,34 @@ export const useStore = create<StoreState>()((set, get) => ({
   
   addDeliveryBoy: async (boy) => {
     try {
+      const insertData: any = {
+        name: boy.name,
+        phone: boy.phone,
+        vehicle_type: boy.vehicleType,
+        status: boy.status,
+        salary: boy.salary,
+        incentive_per_delivery: boy.incentivePerDelivery,
+        rating: boy.rating,
+        total_deliveries: boy.totalDeliveries,
+        successful_deliveries: boy.successfulDeliveries,
+        failed_deliveries: boy.failedDeliveries,
+        joining_date: boy.joiningDate.toISOString().split('T')[0],
+      };
+      
+      // Optional fields
+      if (boy.email) insertData.email = boy.email;
+      if (boy.vehicleNumber) insertData.vehicle_number = boy.vehicleNumber;
+      if (boy.address) insertData.address = boy.address;
+      if (boy.profilePhoto) insertData.profile_photo = boy.profilePhoto;
+      if (boy.aadharNumber) insertData.aadhar_number = boy.aadharNumber;
+      if (boy.licenseNumber) insertData.license_number = boy.licenseNumber;
+      if (boy.emergencyContact) insertData.emergency_contact = boy.emergencyContact;
+      if (boy.workingHours) insertData.working_hours = boy.workingHours;
+      if (boy.notes) insertData.notes = boy.notes;
+      
       const { error } = await supabase
         .from('delivery_boys')
-        .insert([{
-          name: boy.name,
-          phone: boy.phone,
-          vehicle_type: boy.vehicleType,
-          vehicle_number: boy.vehicleNumber,
-          status: boy.status,
-          assigned_area: boy.assignedArea,
-        }]);
+        .insert([insertData]);
       
       if (error) throw error;
       
@@ -675,10 +708,24 @@ export const useStore = create<StoreState>()((set, get) => ({
       const updateData: any = {};
       if (boy.name !== undefined) updateData.name = boy.name;
       if (boy.phone !== undefined) updateData.phone = boy.phone;
+      if (boy.email !== undefined) updateData.email = boy.email;
       if (boy.vehicleType !== undefined) updateData.vehicle_type = boy.vehicleType;
       if (boy.vehicleNumber !== undefined) updateData.vehicle_number = boy.vehicleNumber;
+      if (boy.address !== undefined) updateData.address = boy.address;
       if (boy.status !== undefined) updateData.status = boy.status;
-      if (boy.assignedArea !== undefined) updateData.assigned_area = boy.assignedArea;
+      if (boy.joiningDate !== undefined) updateData.joining_date = boy.joiningDate;
+      if (boy.profilePhoto !== undefined) updateData.profile_photo = boy.profilePhoto;
+      if (boy.aadharNumber !== undefined) updateData.aadhar_number = boy.aadharNumber;
+      if (boy.licenseNumber !== undefined) updateData.license_number = boy.licenseNumber;
+      if (boy.emergencyContact !== undefined) updateData.emergency_contact = boy.emergencyContact;
+      if (boy.salary !== undefined) updateData.salary = boy.salary;
+      if (boy.incentivePerDelivery !== undefined) updateData.incentive_per_delivery = boy.incentivePerDelivery;
+      if (boy.workingHours !== undefined) updateData.working_hours = boy.workingHours;
+      if (boy.rating !== undefined) updateData.rating = boy.rating;
+      if (boy.totalDeliveries !== undefined) updateData.total_deliveries = boy.totalDeliveries;
+      if (boy.successfulDeliveries !== undefined) updateData.successful_deliveries = boy.successfulDeliveries;
+      if (boy.failedDeliveries !== undefined) updateData.failed_deliveries = boy.failedDeliveries;
+      if (boy.notes !== undefined) updateData.notes = boy.notes;
       
       const { error } = await supabase
         .from('delivery_boys')

@@ -122,33 +122,33 @@ export default function OrdersPage() {
   return (
     <div className="flex min-h-screen bg-gray-50">
       <Sidebar />
-      <div className="flex-1 ml-64 p-8">
-        <div className="mb-8">
-          <div className="flex items-center justify-between">
+      <div className="flex-1 lg:ml-64 p-4 sm:p-6 lg:p-8">
+        <div className="mb-6 sm:mb-8">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div>
-              <h1 className="text-3xl font-bold text-gray-900">Orders</h1>
-              <p className="text-gray-600 mt-2">Manage all your orders ({orders.length} total)</p>
+              <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">📦 Orders</h1>
+              <p className="text-sm sm:text-base text-gray-600 mt-1 sm:mt-2">Manage orders ({orders.length} total)</p>
             </div>
-            <div className="flex gap-3">
+            <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
               <button 
                 onClick={handleRefresh}
                 disabled={refreshing}
-                className="btn btn-secondary flex items-center gap-2"
+                className="btn btn-secondary flex items-center justify-center gap-2 w-full sm:w-auto"
               >
-                <RefreshCw size={18} className={refreshing ? 'animate-spin' : ''} />
-                Refresh
+                <RefreshCw size={16} className={refreshing ? 'animate-spin' : ''} />
+                <span className="text-sm">Refresh</span>
               </button>
-              <a href="/orders/new" className="btn btn-primary flex items-center">
-                <Plus size={20} className="mr-2" />
-                Add Order
+              <a href="/orders/new" className="btn btn-primary flex items-center justify-center w-full sm:w-auto">
+                <Plus size={18} className="mr-2" />
+                <span className="text-sm">Add Order</span>
               </a>
             </div>
           </div>
         </div>
 
         {/* Filters */}
-        <div className="card mb-6">
-          <div className="flex flex-col md:flex-row gap-4">
+        <div className="card mb-4 sm:mb-6 p-4">
+          <div className="flex flex-col gap-3 sm:gap-4">
             <div className="flex-1 relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
               <input
@@ -175,8 +175,8 @@ export default function OrdersPage() {
           </div>
         </div>
 
-        {/* Orders Table */}
-        <div className="card">
+        {/* Orders Table - Desktop */}
+        <div className="hidden lg:block card">
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead>
@@ -275,6 +275,101 @@ export default function OrdersPage() {
               </div>
             )}
           </div>
+        </div>
+
+        {/* Orders Cards - Mobile */}
+        <div className="lg:hidden space-y-3">
+          {filteredOrders.length === 0 ? (
+            <div className="card text-center py-8 text-gray-500">
+              <ShoppingCart size={40} className="mx-auto mb-3 text-gray-300" />
+              <p className="font-semibold">No orders found</p>
+              <p className="text-xs">Add your first order</p>
+            </div>
+          ) : (
+            filteredOrders.map((order) => (
+              <div key={order.id} className="card p-3 space-y-2">
+                <div className="flex items-start justify-between">
+                  <div className="flex-1 min-w-0">
+                    <h3 className="font-bold text-base truncate">{order.customerName}</h3>
+                    <p className="text-xs text-gray-600">{format(new Date(order.date), 'dd MMM')}</p>
+                  </div>
+                  <div className="text-right">
+                    <p className="text-lg font-bold text-primary-600">{formatCurrency(order.totalPrice)}</p>
+                    <p className="text-xs text-gray-500 capitalize">{order.mealType}</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-center justify-between py-1 border-t">
+                  <span className="text-sm text-gray-600">Status:</span>
+                  {editingStatus[order.id] ? (
+                    <select
+                      className="px-3 py-1 rounded-lg text-xs font-medium border-2 border-primary-500"
+                      value={order.status}
+                      onChange={(e) => handleStatusChange(order.id, e.target.value)}
+                      onBlur={() => setEditingStatus({...editingStatus, [order.id]: false})}
+                      autoFocus
+                    >
+                      <option value="confirmed">Confirmed</option>
+                      <option value="delivered">Delivered</option>
+                      <option value="cancelled">Cancelled</option>
+                    </select>
+                  ) : (
+                    <span 
+                      onClick={() => setEditingStatus({...editingStatus, [order.id]: true})}
+                      className={`px-3 py-1 rounded-full text-xs font-medium cursor-pointer ${
+                        order.status === 'confirmed' ? 'bg-blue-100 text-blue-800' :
+                        order.status === 'delivered' ? 'bg-green-100 text-green-800' :
+                        'bg-red-100 text-red-800'
+                      }`}
+                    >
+                      {order.status}
+                    </span>
+                  )}
+                </div>
+
+                <div className="grid grid-cols-2 gap-2 text-xs">
+                  <div>
+                    <span className="text-gray-600">Profit:</span>
+                    <span className={`ml-1 font-semibold ${order.profit > 0 ? 'text-green-600' : 'text-red-600'}`}>
+                      {formatCurrency(order.profit)}
+                    </span>
+                  </div>
+                  <div className="text-right">
+                    <span className={`px-2 py-0.5 rounded text-xs font-medium ${
+                      order.source === 'whatsapp' ? 'bg-green-100 text-green-800' :
+                      order.source === 'subscription' ? 'bg-purple-100 text-purple-800' :
+                      'bg-gray-100 text-gray-800'
+                    }`}>
+                      {order.source}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="flex gap-1.5 pt-2 border-t">
+                  <button
+                    onClick={() => setViewOrder(order)}
+                    className="flex-1 btn btn-secondary py-1.5 text-xs"
+                  >
+                    <Eye size={14} className="inline mr-1" />
+                    View
+                  </button>
+                  <button
+                    onClick={() => handleEditOrder(order)}
+                    className="flex-1 btn btn-primary py-1.5 text-xs"
+                  >
+                    <Edit size={14} className="inline mr-1" />
+                    Edit
+                  </button>
+                  <button
+                    onClick={() => handleDelete(order.id)}
+                    className="btn bg-red-500 text-white hover:bg-red-600 py-1.5 px-3 text-xs"
+                  >
+                    <Trash2 size={14} />
+                  </button>
+                </div>
+              </div>
+            ))
+          )}
         </div>
 
         {/* Edit Order Modal */}
