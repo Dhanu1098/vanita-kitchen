@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Sidebar from '@/components/Sidebar';
 import { useStore } from '@/store/useStore';
-import { Plus, Search, Edit, Trash2, Phone, MapPin, RefreshCw, TrendingUp, ShoppingCart, DollarSign, Calendar, Star } from 'lucide-react';
+import { Plus, Search, Edit, Trash2, Phone, MapPin, RefreshCw, TrendingUp, ShoppingCart, DollarSign, Calendar, Star, Users } from 'lucide-react';
 import { Customer } from '@/types';
 
 export default function CustomersPage() {
